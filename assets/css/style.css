@@ -1,11 +1,14 @@
 
-/* * {
-    margin: 0;
-    padding: 0;
-} */
+/* HEADER */
 
 .navbar {
     display: flex;
+    justify-content: center;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -13,3 +16,48 @@
     width: 500px;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+/* HERO SECTION */
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0, .6)), url(../images/pexels-spencer-davis-4393021.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 0;
+    color: #fff;
+  }
+
+/* FOOTER */
+footer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+    align-items: center;
+    color: #fff;
+}
+
+/* footer div a {
+    transition: all .5s;
+}
+
+footer div a:hover {
+    color: #000;
+} */
+
+/* hide */
+
+.hide {
+  display: none;
+}
+
+.figure-image{
+  width: 30%;
+  height: 30%;
+}
+
+.vertical-center {
+  align-items: center;
+}
