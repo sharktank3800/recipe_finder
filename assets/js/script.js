@@ -1,5 +1,5 @@
 var heroEl = document.querySelector('.hero-body');
-
+// var header = document.querySelector('.')
 const headers = {
   "X-Api-Key": 'gF3CYb8qvTBIBHse8onGdQ==BKVsjSYgIPJqB3iw'
 }
@@ -20,14 +20,16 @@ function getQuote() {
     h4.innerText = data[0].author;
 
     heroEl.append(p, h4);
-
-    console.log(data[0].author);
-    console.log(data[0].quote);
   });
 
 }
 
-
 window.addEventListener('load', getQuote);
 
 setInterval(getQuote, 30000);
+
+// function hidePage() {
+   // header.classlist.add("hide")
+  //  section.classlist.add)("hide")
+  
+
