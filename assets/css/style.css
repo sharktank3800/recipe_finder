@@ -1,11 +1,6 @@
 
 /* HEADER */
 
-.navbar {
-    display: flex;
-    justify-content: center;
-}
-
 .header-wrapper {
     display: flex;
     align-items: center;
@@ -39,6 +34,10 @@ footer {
     color: #fff;
 }
 
+.bg-md {
+    background-color: #f4f4f4;
+}
+
 /* footer div a {
     transition: all .5s;
 }
@@ -51,11 +50,6 @@ footer div a:hover {
 
 .hide {
   display: none;
-}
-
-.figure-image{
-  width: 30%;
-  height: 30%;
 }
 
 .vertical-center {
