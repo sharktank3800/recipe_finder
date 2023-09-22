@@ -14,8 +14,8 @@
     <img src="./assets/images/logo-v2.png" alt="logo" width="80px">
 
     <div class="header-wrapper m-auto">
-      <input type="text" class="input is-normal " placeholder="Search">
-      <button class="button ml-2">submit</button>
+      <input id="search_bar" type="text" class="input is-normal " placeholder="Search">
+      <button class="button ml-2">Search</button>
     </div>
   </header>
 
@@ -25,18 +25,18 @@
   </section>
 
 
-  <section class="section">
+  <section class="section hide">
 
     <div class="columns is-narrow is-centered is-mobile">
 
       <div class="column">
-        <h4 class="mx-5 is-size-2 has-text-centered">Seafood</h4>
+        <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">Seafood</h4>
       </div>
       <div class="column">
-        <h4 class="mx-5 is-size-2 has-text-centered">Italian</h4>
+        <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">Italian</h4>
       </div>
       <div class="column">
-        <h4 class="mx-5 is-size-2 has-text-centered">Mexican</h4>
+        <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">Mexican</h4>
       </div>
 
     </div>
@@ -64,7 +64,10 @@
     </div>
 
   </section>
-  <footer class="has-background-grey pt-6 pb-6">
+  <section id="meals" class="is-flex is-flex-direction-row is-flex-wrap-wrap">
+
+  </section>
+  <footer class="has-background-grey pt-6 pb-6 mt-auto">
     <h5 class="is-size-4 has-text-right px-6">Contact Us</h5>
     <div class="is-flex-direction-row is-size-6 has-text-weight-bold is-justify-content-center is-align-items-center">
       <a class="mr-4" href="mailto:customerservice@recipe.com">Email Customer Service</a>
