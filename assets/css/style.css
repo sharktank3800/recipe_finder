@@ -1,41 +1,62 @@
-
 /* HEADER */
 
-.header-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
 }
 
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+} */
+
 .input {
-    width: 500px;
+  width: 500px;
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
-  }
+  color: #fff;
+  text-decoration: none;
+}
 
 /* HERO SECTION */
 .hero-section {
-    background-image: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0, .6)), url(../images/pexels-spencer-davis-4393021.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 4rem 0;
-    color: #fff;
-  }
+  background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(../images/pexels-spencer-davis-4393021.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 0;
+  color: #fff;
+}
 
 /* FOOTER */
 footer {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 1rem;
-    align-items: center;
-    color: #fff;
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  /* height: 100px; */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1rem;
+  align-items: center;
+  color: #fff;
+}
+
+#secondFooter {
+  position: fixed;
 }
 
 .bg-md {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 /* footer div a {
@@ -54,4 +75,60 @@ footer div a:hover {
 
 .vertical-center {
   align-items: center;
+}
+
+#meals {
+  /* margin: auto; */
+  justify-content: center;
+}
+
+#meals div {
+  background-color: #f4f4f4;
+  margin: 1rem;
+}
+
+#meals div img {
+  height: 275px;
+  width: 275px;
+  border-radius: 50%;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  footer {
+    display: flex;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  #meals div img {
+    height: 200px;
+    width: 200px;
+  }
+
+  #meals h4 {
+    font-size: 14px;
+  }
+
+}
+
+@media screen and (max-width: 720px) {
+  #search_bar {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  header img {
+    width: 50px;
+    height: 50px;
+  }
+
+  #search_bar {
+    width: 175px;
+  }
 }
