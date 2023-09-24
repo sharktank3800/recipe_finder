@@ -1,170 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/cef23a12a9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Food Finder</title>
+  </head>
+
+  <body>
+    <header class="is-flex px-3 navbar is-black">
+      <img
+        id="logo"
+        class="clickable"
+        src="./assets/images/logo-v2.png"
+        alt="logo"
+        width="80px"
+      />
+
+      <div class="header-wrapper m-auto">
+        <input
+          id="search-input"
+          type="text"
+          class="input is-normal"
+          placeholder="Search"
         />
-        <script
-            src="https://kit.fontawesome.com/cef23a12a9.js"
-            crossorigin="anonymous"
-        ></script>
-        <link rel="stylesheet" href="assets/css/style.css" />
-        <title>Food Finder</title>
-    </head>
+        <button
+          id="search-button"
+          data-filter="search.php?s="
+          class="button ml-2"
+        >
+          Search
+        </button>
+        <div class="dropdown">
+          <button class="button ml-2">Recently Viewed</button>
+          <div id="recent-dropdown" class="dropdown-content hide">
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+            <p>Pasta</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <body>
-        <header class="is-flex px-3 navbar is-black">
-            <img
-                id="logo"
+    <section class="hero hero-section">
+      <div class="hero-body mx-4"></div>
+    </section>
+
+    <main>
+      <section id="home-page">
+        <div class="columns is-narrow is-centered is-mobile">
+          <div class="column">
+            <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">
+              Seafood
+            </h4>
+          </div>
+          <div class="column">
+            <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">
+              Pasta
+            </h4>
+          </div>
+          <div class="column">
+            <h4 class="mx-5 is-size-2 is-size-4-mobile has-text-centered">
+              Beef
+            </h4>
+          </div>
+        </div>
+
+        <div
+          id="categories"
+          class="columns is-narrow is-centered is-mobile bg-md"
+        >
+          <div class="column">
+            <figure class="image m-5">
+              <img
                 class="clickable"
-                src="./assets/images/logo-v2.png"
-                alt="logo"
-                width="80px"
-            />
+                data-filter="filter.php?c="
+                data-search="Seafood"
+                src="./assets/images/seafoodSecond.jpeg"
+              />
+            </figure>
+          </div>
 
-            <div class="header-wrapper m-auto">
-                <input
-                    id="search-input"
-                    type="text"
-                    class="input is-normal"
-                    placeholder="Search"
-                />
-                <button
-                    id="search-button"
-                    data-filter="search.php?s="
-                    class="button ml-2"
-                >
-                    Search
-                </button>
-            </div>
-        </header>
+          <div class="column">
+            <figure class="image m-5">
+              <img
+                class="clickable"
+                data-filter="filter.php?c="
+                data-search="Pasta"
+                src="./assets/images/italianSecond.jpeg"
+              />
+            </figure>
+          </div>
 
-        <section class="hero hero-section">
-            <div class="hero-body mx-4"></div>
-        </section>
+          <div class="column">
+            <figure class="image m-5">
+              <img
+                class="clickable"
+                data-filter="filter.php?c="
+                data-search="Beef"
+                src="./assets/images/beef.jpeg"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
 
-        <main>
-            <section id="home-page">
-                <div class="columns is-narrow is-centered is-mobile">
-                    <div class="column">
-                        <h4
-                            class="mx-5 is-size-2 is-size-4-mobile has-text-centered"
-                        >
-                            Seafood
-                        </h4>
-                    </div>
-                    <div class="column">
-                        <h4
-                            class="mx-5 is-size-2 is-size-4-mobile has-text-centered"
-                        >
-                            Pasta
-                        </h4>
-                    </div>
-                    <div class="column">
-                        <h4
-                            class="mx-5 is-size-2 is-size-4-mobile has-text-centered"
-                        >
-                            Beef
-                        </h4>
-                    </div>
-                </div>
+      <section
+        id="meals-page"
+        class="display-flex is-flex-direction-row is-flex-wrap-wrap hide"
+      ></section>
+      <section
+        id="recipe-page"
+        class="display-flex is-flex-direction-column is-align-items-center hide"
+      ></section>
 
-                <div
-                    id="categories"
-                    class="columns is-narrow is-centered is-mobile bg-md"
-                >
-                    <div class="column">
-                        <figure class="image m-5">
-                            <img
-                                class="clickable"
-                                data-filter="filter.php?c="
-                                data-search="Seafood"
-                                src="./assets/images/seafoodSecond.jpeg"
-                            />
-                        </figure>
-                    </div>
+      <div class="modal">
+        <div class="modal-background"></div>
 
-                    <div class="column">
-                        <figure class="image m-5">
-                            <img
-                                class="clickable"
-                                data-filter="filter.php?c="
-                                data-search="Pasta"
-                                src="./assets/images/italianSecond.jpeg"
-                            />
-                        </figure>
-                    </div>
+        <div class="modal-content">
+          <div class="box">
+            <p>Your search produced no results</p>
+          </div>
+        </div>
 
-                    <div class="column">
-                        <figure class="image m-5">
-                            <img
-                                class="clickable"
-                                data-filter="filter.php?c="
-                                data-search="Beef"
-                                src="./assets/images/beef.jpeg"
-                            />
-                        </figure>
-                    </div>
-                </div>
-            </section>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
 
-            <section
-                id="meals-page"
-                class="display-flex is-flex-direction-row is-flex-wrap-wrap hide"
-            ></section>
-            <section
-                id="recipe-page"
-                class="is-flex is-flex-direction-column is-align-items-center hide"
-            ></section>
+      <div class="modal">
+        <div class="modal-background"></div>
 
-            <div class="modal">
-                <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <p>Your search produced no results!</p>
+          </div>
+        </div>
 
-                <div class="modal-content">
-                    <div class="box">
-                        <p>Your search produced no results</p>
-                    </div>
-                </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+    </main>
 
-                <button
-                    class="modal-close is-large"
-                    aria-label="close"
-                ></button>
-            </div>
-
-            <div class="modal">
-                <div class="modal-background"></div>
-
-                <div class="modal-content">
-                    <div class="box">
-                        <p>Your search produced no results!</p>
-                    </div>
-                </div>
-
-                <button
-                    class="modal-close is-large"
-                    aria-label="close"
-                ></button>
-            </div>
-        </main>
-
-        <footer class="has-background-grey pt-6 pb-6 mt-auto">
-            <h5 class="is-size-4 has-text-right px-6">Contact Us</h5>
-            <div
-                class="is-flex-direction-row is-size-6 has-text-weight-bold is-justify-content-center is-align-items-center"
-            >
-                <a class="mr-4" href="mailto:customerservice@recipe.com"
-                    >Email Customer Service</a
-                >
-                <a class="mr-4" href="#">(555) 555-5555</a>
-                <a class="is-hovered" href="#"
-                    >123 Food Court New York, NY 11111</a
-                >
-            </div>
-        </footer>
-        <script src="assets/js/script.js"></script>
-    </body>
+    <footer class="has-background-grey pt-6 pb-6 mt-auto">
+      <h5 class="is-size-4 has-text-right px-6">Contact Us</h5>
+      <div
+        class="is-flex-direction-row is-size-6 has-text-weight-bold is-justify-content-center is-align-items-center"
+      >
+        <a class="mr-4" href="mailto:customerservice@recipe.com"
+          >Email Customer Service</a
+        >
+        <a class="mr-4" href="#">(555) 555-5555</a>
+        <a class="is-hovered" href="#">123 Food Court New York, NY 11111</a>
+      </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
