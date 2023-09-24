@@ -9,6 +9,10 @@ var modalEl = document.querySelector(".modal");
 var modalCloseButton = document.querySelector(".modal-close");
 var homePage = document.querySelector("#logo");
 
+var dropdownButton = document.querySelector("#dropdown-button");
+var recentDropDown = document.querySelector("#recent-dropdown");
+var recentItemEl = document.querySelector(".recentItemEl");
+
 const mealFilter = "search.php?s=";
 const categoryFilter = "filter.php?c=";
 const idFilter = "lookup.php?i=";
@@ -187,7 +191,7 @@ function searchMealDB(e) {
 }
 
 function addItemToStorage(item) {
-    const itemsFromStorage = getItemsFromStorage();
+    var itemsFromStorage = getItemsFromStorage();
 
     var itemFound = false;
 
@@ -197,7 +201,12 @@ function addItemToStorage(item) {
         }
     });
 
-    if (!itemFound) {
+    // ADJUSTED TO LIMIT LOCAL STORAGE TO 5 RECIPES
+    if (!itemFound && itemsFromStorage.length < 5) {
+        itemsFromStorage.push(item);
+        localStorage.setItem("meals", JSON.stringify(itemsFromStorage));
+    } else if (!itemFound && itemsFromStorage.length === 5) {
+        itemsFromStorage.shift();
         itemsFromStorage.push(item);
         localStorage.setItem("meals", JSON.stringify(itemsFromStorage));
     }
@@ -205,6 +214,21 @@ function addItemToStorage(item) {
 
 function getItemsFromStorage() {
     return JSON.parse(localStorage.getItem("meals")) || [];
+}
+
+// DISPLAYS ITEM TO DROPDOWN
+function addItemsToDropdown() {
+    var index = getItemsFromStorage();
+
+    for (var i = 0; i < index.length; i++) {
+        var listItem = document.createElement("p");
+        listItem.innerText = index[i].name;
+        listItem.dataset.filter = idFilter;
+        listItem.dataset.search = index[i].id;
+        listItem.classList.add("recentItemEl");
+        recentDropDown.append(listItem);
+        // listItem.addEventListener("click", searchMealDB);
+    }
 }
 
 function closeModal() {
@@ -219,9 +243,20 @@ function recipeReturnArrow() {
 categorySearch.addEventListener("click", searchMealDB);
 searchButton.addEventListener("click", searchMealDB);
 mealsPageEl.addEventListener("click", searchMealDB);
+recentDropDown.addEventListener("click", searchMealDB);
 modalCloseButton.addEventListener("click", closeModal);
 homePage.addEventListener("click", displayHomePage);
 recipePageEl.addEventListener("click", recipeReturnArrow);
+
+dropdownButton.addEventListener("click", function () {
+    if (recentDropDown.classList.contains("hide")) {
+        recentDropDown.innerHTML = "";
+        addItemsToDropdown();
+        recentDropDown.classList.remove("hide");
+    } else {
+        recentDropDown.classList.add("hide");
+    }
+});
 
 getQuote();
 setInterval(getQuote, 30000);
