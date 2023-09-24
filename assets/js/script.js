@@ -219,13 +219,15 @@ function getItemsFromStorage() {
 // DISPLAYS ITEM TO DROPDOWN
 function addItemsToDropdown() {
     var index = getItemsFromStorage();
-    
-    for(var i = 0; i < index.length; i++) {
-      var listItem = document.createElement("p");
-      listItem.innerText = index[i].name;
-      listItem.classList.add("recentItemEl");
-      recentDropDown.append(listItem);
-      listItem.addEventListener("click", searchMealDB);
+
+    for (var i = 0; i < index.length; i++) {
+        var listItem = document.createElement("p");
+        listItem.innerText = index[i].name;
+        listItem.dataset.filter = idFilter;
+        listItem.dataset.search = index[i].id;
+        listItem.classList.add("recentItemEl");
+        recentDropDown.append(listItem);
+        // listItem.addEventListener("click", searchMealDB);
     }
 }
 
@@ -241,20 +243,19 @@ function recipeReturnArrow() {
 categorySearch.addEventListener("click", searchMealDB);
 searchButton.addEventListener("click", searchMealDB);
 mealsPageEl.addEventListener("click", searchMealDB);
+recentDropDown.addEventListener("click", searchMealDB);
 modalCloseButton.addEventListener("click", closeModal);
 homePage.addEventListener("click", displayHomePage);
 recipePageEl.addEventListener("click", recipeReturnArrow);
 
-
-
-dropdownButton.addEventListener("click", function(){
-  if(recentDropDown.classList.contains("hide")){
-    recentDropDown.innerHTML = "";
-    addItemsToDropdown();
-    recentDropDown.classList.remove("hide");
-  } else {
-    recentDropDown.classList.add("hide");
-  }
+dropdownButton.addEventListener("click", function () {
+    if (recentDropDown.classList.contains("hide")) {
+        recentDropDown.innerHTML = "";
+        addItemsToDropdown();
+        recentDropDown.classList.remove("hide");
+    } else {
+        recentDropDown.classList.add("hide");
+    }
 });
 
 getQuote();
