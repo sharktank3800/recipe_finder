@@ -28,7 +28,9 @@ function displayHomePage() {
     recipePageEl.classList.add("hide");
 }
 
+var isMealFetched = 0;
 function displayMealPage() {
+    isMealFetched++;
     mealsPageEl.classList.remove("hide");
     homePageEl.classList.add("hide");
     recipePageEl.classList.add("hide");
@@ -38,6 +40,7 @@ function displayRecipePage() {
     recipePageEl.classList.remove("hide");
     homePageEl.classList.add("hide");
     mealsPageEl.classList.add("hide");
+    recentDropDown.classList.add("hide");
 }
 
 function getQuote() {
@@ -65,7 +68,7 @@ function displayRecipe(data) {
 
     recipePageEl.innerHTML = "";
 
-    var ingredientsArray = [];
+    // var ingredientsArray = [];
     var recipeSlot = data.meals[0];
 
     var headerDiv = document.createElement("div");
@@ -227,7 +230,6 @@ function addItemsToDropdown() {
         listItem.dataset.search = index[i].id;
         listItem.classList.add("recentItemEl");
         recentDropDown.append(listItem);
-        // listItem.addEventListener("click", searchMealDB);
     }
 }
 
@@ -235,9 +237,15 @@ function closeModal() {
     modalEl.classList.remove("is-active");
 }
 
-function recipeReturnArrow() {
-    recipePageEl.innerHTML = "";
-    displayMealPage();
+function recipeReturnArrow(e) {
+    if (e.target.id === "recipe-arrow") {
+        if (isMealFetched > 0) {
+            recipePageEl.innerHTML = "";
+            displayMealPage();
+        } else if (isMealFetched === 0) {
+            displayHomePage();
+        }
+    }
 }
 
 categorySearch.addEventListener("click", searchMealDB);
@@ -257,6 +265,15 @@ dropdownButton.addEventListener("click", function () {
         recentDropDown.classList.add("hide");
     }
 });
+
+window.onclick = function (event) {
+    if (
+        !event.target.matches(".recentItemEl") &&
+        !event.target.matches("#dropdown-button")
+    ) {
+        recentDropDown.classList.add("hide");
+    }
+};
 
 getQuote();
 setInterval(getQuote, 30000);
