@@ -35,7 +35,7 @@ git clone https://github.com/sharktank3800/recipe_finder.git
 
 ## License
 
--   This project is licensed under the MIT License - see the [LICENSE]()
+-   This project is licensed under the MIT License.
 
 ## Acknowledgments
 
