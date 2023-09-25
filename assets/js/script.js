@@ -1,3 +1,5 @@
+// DOM ELEMENTS
+// -------------------------------------------------------------------
 var heroEl = document.querySelector(".hero-body");
 var homePageEl = document.querySelector("#home-page");
 var mealsPageEl = document.querySelector("#meals-page");
@@ -13,22 +15,30 @@ var dropdownButton = document.querySelector("#dropdown-button");
 var recentDropDown = document.querySelector("#recent-dropdown");
 var recentItemEl = document.querySelector(".recentItemEl");
 
+var isMealFetched = 0;
+
+// CONSTANTS
+// -------------------------------------------------------------------
 const mealFilter = "search.php?s=";
 const categoryFilter = "filter.php?c=";
 const idFilter = "lookup.php?i=";
 
+// MealDB base url
 const baseURL = "https://www.themealdb.com/api/json/v1/1/";
+
+// Quotes API Header
 const headers = {
     "X-Api-Key": "gF3CYb8qvTBIBHse8onGdQ==BKVsjSYgIPJqB3iw",
 };
 
+// FUNCTIONS
+// -------------------------------------------------------------------
 function displayHomePage() {
     homePageEl.classList.remove("hide");
     mealsPageEl.classList.add("hide");
     recipePageEl.classList.add("hide");
 }
 
-var isMealFetched = 0;
 function displayMealPage() {
     isMealFetched++;
     mealsPageEl.classList.remove("hide");
@@ -68,7 +78,6 @@ function displayRecipe(data) {
 
     recipePageEl.innerHTML = "";
 
-    // var ingredientsArray = [];
     var recipeSlot = data.meals[0];
 
     var headerDiv = document.createElement("div");
@@ -184,6 +193,7 @@ function fetchData(filter, search) {
         });
 }
 
+// Searches meals from API
 function searchMealDB(e) {
     if (e.target.dataset.filter && e.target.dataset.search) {
         fetchData(e.target.dataset.filter, e.target.dataset.search.toString());
@@ -204,7 +214,6 @@ function addItemToStorage(item) {
         }
     });
 
-    // ADJUSTED TO LIMIT LOCAL STORAGE TO 5 RECIPES
     if (!itemFound && itemsFromStorage.length < 5) {
         itemsFromStorage.push(item);
         localStorage.setItem("meals", JSON.stringify(itemsFromStorage));
@@ -219,7 +228,7 @@ function getItemsFromStorage() {
     return JSON.parse(localStorage.getItem("meals")) || [];
 }
 
-// DISPLAYS ITEM TO DROPDOWN
+// Adds recent items to the dropdown menu
 function addItemsToDropdown() {
     var index = getItemsFromStorage();
 
@@ -237,12 +246,13 @@ function closeModal() {
     modalEl.classList.remove("is-active");
 }
 
+// Handles returning from the recipe page
 function recipeReturnArrow(e) {
     if (e.target.id === "recipe-arrow") {
         if (isMealFetched > 0) {
             recipePageEl.innerHTML = "";
             displayMealPage();
-        } else if (isMealFetched === 0) {
+        } else {
             displayHomePage();
         }
     }
@@ -275,5 +285,11 @@ window.onclick = function (event) {
     }
 };
 
+// INITIAL ACTIONS
+// -------------------------------------------------------------------
+
+// Fetch and display a randomly generated quote
 getQuote();
+
+// Fetch a new quote every 30 seconds
 setInterval(getQuote, 30000);
