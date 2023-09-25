@@ -24,8 +24,7 @@ git clone https://github.com/sharktank3800/recipe_finder.git
 -   View Recipe Details: Click on a meal to view its recipe details, including ingredients and cooking instructions.
 -   Recent Meals Dropdown: Click the "recently viewed" button to open a dropdown menu containing users recently viewed meals. Clicking on a recent meal item will display its recipe details.
 
-![Website Screenshot](assets/images/Screenshot1.png)
-![Website Screenshot](assets/images/Screenshot2.png)
+![Website Screenshot](assets/images/Screenshot.png)
 
 ## Features
 
